@@ -1,22 +1,43 @@
 package ru.antomad.otus;
 
-import java.util.Map;
+import java.util.*;
 
 public class CustomerService {
 
-    //todo: 3. надо реализовать методы этого класса
-    //важно подобрать подходящую Map-у, посмотрите на редко используемые методы, они тут полезны
+    private final NavigableMap<Customer, String> dictionary;
+
+    public CustomerService() {
+        this.dictionary = new TreeMap<>(Comparator.comparingLong(Customer::getScores));
+    }
 
     public Map.Entry<Customer, String> getSmallest() {
-        //Возможно, чтобы реализовать этот метод, потребуется посмотреть как Map.Entry сделан в jdk
-        return null; // это "заглушка, чтобы скомилировать"
+        Map.Entry<Customer, String> entry = dictionary.entrySet().iterator().next();
+        return getCopyOfEntry(entry);
     }
 
     public Map.Entry<Customer, String> getNext(Customer customer) {
-        return null; // это "заглушка, чтобы скомилировать"
+        Map.Entry<Customer, String> result = dictionary.ceilingEntry(customer);
+        Iterator<Map.Entry<Customer, String>> iterator = dictionary.entrySet().iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getKey().equals(customer)) {
+                result = iterator.next();
+                break;
+            }
+        }
+        return result != null ? getCopyOfEntry(result) : null;
     }
 
     public void add(Customer customer, String data) {
+        dictionary.put(customer, data);
+    }
 
+    private Map.Entry<Customer, String> getCopyOfEntry(Map.Entry<Customer, String> entry) {
+        Map<Customer, String> copy = new HashMap<>();
+        copy.put(new Customer(
+                        entry.getKey().getId(),
+                        entry.getKey().getName(),
+                        entry.getKey().getScores()),
+                entry.getValue());
+        return copy.entrySet().iterator().next();
     }
 }
