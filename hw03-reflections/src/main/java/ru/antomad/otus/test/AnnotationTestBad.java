@@ -1,14 +1,20 @@
-package ru.antomad.otus;
+package ru.antomad.otus.test;
 
 import ru.antomad.otus.annotation.After;
 import ru.antomad.otus.annotation.Before;
 import ru.antomad.otus.annotation.Test;
 
-public class AnnotationTest {
+public class AnnotationTestBad {
 
     @Before
-    public void warmUp() {
+    public void warmUpOk() {
         System.out.println("warmUp");
+    }
+
+    @Before
+    public void warmUpFail() throws Exception {
+        System.out.println("failWarmUp");
+        throw new Exception("warmUp failed with exception");
     }
 
     @After
@@ -26,4 +32,5 @@ public class AnnotationTest {
     public void successTest() {
         System.out.println("successTest");
     }
+
 }
