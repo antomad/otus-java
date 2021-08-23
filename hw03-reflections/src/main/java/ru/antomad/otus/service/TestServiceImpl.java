@@ -79,7 +79,7 @@ public class TestServiceImpl implements TestService {
 
                     } catch (RuntimeException e) {
                         classReport = new ClassReport(
-                                clazz.getName(),
+                                className,
                                 String.format(messageService.getMessage("error"), getRootCause(e).getMessage()),
                                 null);
                         break;
@@ -89,6 +89,10 @@ public class TestServiceImpl implements TestService {
 
         } catch (ClassNotFoundException e) {
             logger.severe("Class not found");
+            classReport = new ClassReport(
+                    className,
+                    "Class not found",
+                    null);
         }
         return classReport;
     }
