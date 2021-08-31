@@ -8,9 +8,10 @@ public class Application {
 
         MessageService messageService = new MessageServiceImpl();
         ReportService reportService = new ReportServiceImpl();
-        TestService testService = new TestServiceImpl(messageService, reportService);
+        TestService testService = new TestServiceImpl(messageService);
 
-        testService.runAllFromPackage(Application.class.getPackageName() + ".test");
-        reportService.print();
+        reportService.print(
+                testService.runAllTestsFromClassesInPackage(
+                        Application.class.getPackageName() + ".test"));
     }
 }

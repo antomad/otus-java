@@ -2,9 +2,9 @@ package ru.antomad.otus.service;
 
 import ru.antomad.otus.reports.ClassReport;
 
+import java.util.List;
+
 public interface ReportService {
 
-    void collect(ClassReport classReport);
-
-    void print();
+    void print(List<ClassReport> classReports);
 }

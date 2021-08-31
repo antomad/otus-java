@@ -1,6 +1,10 @@
 package ru.antomad.otus.service;
 
+import ru.antomad.otus.reports.ClassReport;
+
+import java.util.List;
+
 public interface TestService {
 
-    void runAllFromPackage(String packageName);
+    List<ClassReport> runAllTestsFromClassesInPackage(String packageName);
 }

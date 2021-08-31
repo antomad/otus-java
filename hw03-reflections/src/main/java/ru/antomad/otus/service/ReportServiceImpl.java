@@ -3,30 +3,24 @@ package ru.antomad.otus.service;
 import ru.antomad.otus.reports.ClassReport;
 import ru.antomad.otus.reports.TestReport;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReportServiceImpl implements ReportService {
 
-    private final List<ClassReport> classReports = new ArrayList<>();
-
     @Override
-    public void collect(ClassReport classReport) {
-        classReports.add(classReport);
-    }
-
-    @Override
-    public void print() {
+    public void print(List<ClassReport> classReports) {
+        System.out.println();
         for (ClassReport classReport : classReports) {
-            System.out.println(classReport.getClassName());
+            System.out.println("Test class name: " + classReport.getClassName());
             if (classReport.getError() == null) {
                 printSummary(classReport);
                 for (TestReport testReport : classReport.getTestReports()) {
-                    System.out.println(testReport.getMessage());
+                    System.out.println("   Test report: " + testReport.getMessage());
                 }
             } else {
-                System.out.println(classReport.getError());
+                System.out.println("   Error message: " + classReport.getError());
             }
+            System.out.println();
         }
     }
 

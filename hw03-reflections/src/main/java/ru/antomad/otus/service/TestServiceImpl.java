@@ -21,22 +21,24 @@ public class TestServiceImpl implements TestService {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     private final MessageService messageService;
-    private final ReportService reportService;
 
-    public TestServiceImpl(MessageService messageService,
-                           ReportService reportService) {
+    public TestServiceImpl(MessageService messageService) {
         this.messageService = messageService;
-        this.reportService = reportService;
     }
 
-    public void runAllFromPackage(String packageName) {
+    public List<ClassReport> runAllTestsFromClassesInPackage(String packageName) {
+
+        List<ClassReport> classReports = new ArrayList<>();
+
         try {
             for (String className : getFullClassNamesFromPackage(packageName)) {
-                reportService.collect(runAllTestsFromClass(className));
+                classReports.add(runAllTestsFromClass(className));
             }
         } catch (IOException e) {
             logger.severe("Can't get resources");
         }
+
+        return classReports;
     }
 
     public ClassReport runAllTestsFromClass(String className) {
@@ -56,27 +58,11 @@ public class TestServiceImpl implements TestService {
                 for (Method method : runTest) {
                     try {
                         Object object = ReflectionHelper.instantiate(clazz);
+                        runBeforeMethods(runFirst, object, runLast);
 
-                        runFirst.forEach(beforeMethod -> ReflectionHelper.callMethod(object, beforeMethod.getName()));
+                        classReport.getTestReports().add(runTestMethod(method, object));
 
-                        try {
-                            ReflectionHelper.callMethod(object, method.getName());
-                            classReport.getTestReports()
-                                    .add(new TestReport(
-                                            true,
-                                            String.format(messageService.getMessage("success"),
-                                                    method.getName())));
-                        } catch (RuntimeException e) {
-                            classReport.getTestReports()
-                                    .add(new TestReport(
-                                            false,
-                                            String.format(messageService.getMessage("fail"),
-                                                    method.getName(),
-                                                    getRootCause(e).getMessage())));
-                        }
-
-                        runLast.forEach(afterMethod -> ReflectionHelper.callMethod(object, afterMethod.getName()));
-
+                        runAfterMethods(runLast, object, null);
                     } catch (RuntimeException e) {
                         classReport = new ClassReport(
                                 className,
@@ -88,12 +74,14 @@ public class TestServiceImpl implements TestService {
             }
 
         } catch (ClassNotFoundException e) {
-            logger.severe("Class not found");
+            String message = messageService.getMessage("class");
+            logger.severe(message);
             classReport = new ClassReport(
                     className,
-                    "Class not found",
+                    message,
                     null);
         }
+
         return classReport;
     }
 
@@ -134,5 +122,45 @@ public class TestServiceImpl implements TestService {
             }
         }
         return fileNames;
+    }
+
+    private void runBeforeMethods(List<Method> before, Object object, List<Method> after) {
+        try {
+            for (Method method : before) {
+                ReflectionHelper.callMethod(object, method.getName());
+            }
+        } catch (RuntimeException e) {
+            runAfterMethods(after, object, e);
+            throw e;
+        }
+    }
+
+    private void runAfterMethods(List<Method> methods, Object object, Throwable previous) {
+        try {
+            for (Method method : methods) {
+                ReflectionHelper.callMethod(object, method.getName());
+            }
+        } catch (RuntimeException e) {
+            if (previous != null) {
+                e.addSuppressed(previous);
+            }
+            throw e;
+        }
+    }
+
+    private TestReport runTestMethod(Method method, Object object) {
+        try {
+            ReflectionHelper.callMethod(object, method.getName());
+            return new TestReport(
+                    true,
+                    String.format(messageService.getMessage("success"),
+                            method.getName()));
+        } catch (RuntimeException e) {
+            return new TestReport(
+                    false,
+                    String.format(messageService.getMessage("fail"),
+                            method.getName(),
+                            getRootCause(e).getMessage()));
+        }
     }
 }

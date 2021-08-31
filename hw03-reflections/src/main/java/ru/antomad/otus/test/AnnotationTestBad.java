@@ -8,29 +8,29 @@ public class AnnotationTestBad {
 
     @Before
     public void warmUpOk() {
-        System.out.println("warmUp");
+        System.out.println("AnnotationTestBad: warmUp");
     }
 
     @Before
     public void warmUpFail() throws Exception {
-        System.out.println("failWarmUp");
-        throw new Exception("warmUp failed with exception");
+        System.out.println("AnnotationTestBad: failWarmUp");
+        throw new Exception("AnnotationTestBad: warmUp failed with exception");
     }
 
     @After
     public void coolDown() {
-        System.out.println("coolDown");
+        System.out.println("AnnotationTestBad: coolDown");
     }
 
     @Test
     public void failTest() throws Exception {
-        System.out.println("failTest");
-        throw new Exception("test failed with exception");
+        System.out.println("AnnotationTestBad: failTest");
+        throw new Exception("AnnotationTestBad: test failed with exception");
     }
 
     @Test
     public void successTest() {
-        System.out.println("successTest");
+        System.out.println("AnnotationTestBad: successTest");
     }
 
 }
