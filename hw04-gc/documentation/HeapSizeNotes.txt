@@ -29,5 +29,21 @@ Default IDEA settings: spend msec:13504, sec:13
 
 Optimal heap size is 4096 MB
 
+After type migration from Integer to int
+4096: spend msec:2813, sec:2
+4096: spend msec:2815, sec:2
+4096: spend msec:2844, sec:2
+2048: spend msec:2594, sec:2
+2048: spend msec:2756, sec:2
+2048: spend msec:2525, sec:2
+1024: spend msec:2703, sec:2
+1024: spend msec:2397, sec:2
+1024: spend msec:2518, sec:2
+512: spend msec:3137, sec:3
+512: spend msec:2960, sec:2
+512: spend msec:3284, sec:3
+768: spend msec:3213, sec:3
+768: spend msec:2864, sec:2
+768: spend msec:3041, sec:3
 
-
+Optimal heap size is 1024 MB
