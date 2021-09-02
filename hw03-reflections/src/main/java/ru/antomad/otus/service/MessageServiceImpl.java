@@ -13,7 +13,7 @@ public class MessageServiceImpl implements MessageService {
         ERROR("General error. Message is: %s"),
         CLASS("Class not found");
 
-        public final String message;
+        private final String message;
 
         Message(String message) {
             this.message = message;
