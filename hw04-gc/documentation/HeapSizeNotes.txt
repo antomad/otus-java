@@ -1,0 +1,49 @@
+Default IDEA settings: spend msec:13504, sec:13
+128:  OOM
+256:  spend msec:23013, sec:23
+512:  spend msec:15137, sec:15
+1024: spend msec:14301, sec:14
+2048: spend msec:14563, sec:14
+768:  spend msec:15389, sec:15
+512:  spend msec:15483, sec:15
+512:  spend msec:15547, sec:15
+512:  spend msec:15177, sec:15
+768:  spend msec:15670, sec:15
+768:  spend msec:15447, sec:15
+768:  spend msec:15591, sec:15
+1024: spend msec:14205, sec:14
+1024: spend msec:14156, sec:14
+1024: spend msec:14521, sec:14
+1536: spend msec:14141, sec:14
+1536: spend msec:14435, sec:14
+1536: spend msec:14056, sec:14
+2048: spend msec:13891, sec:13
+2048: spend msec:13926, sec:13
+2048: spend msec:14150, sec:14
+4096: spend msec:12921, sec:12
+4096: spend msec:12966, sec:12
+4096: spend msec:12816, sec:12
+8192: spend msec:14372, sec:14
+8192: spend msec:13796, sec:13
+8192: spend msec:17297, sec:17
+
+Optimal heap size is 4096 MB
+
+After type migration from Integer to int
+4096: spend msec:2813, sec:2
+4096: spend msec:2815, sec:2
+4096: spend msec:2844, sec:2
+2048: spend msec:2594, sec:2
+2048: spend msec:2756, sec:2
+2048: spend msec:2525, sec:2
+1024: spend msec:2703, sec:2
+1024: spend msec:2397, sec:2
+1024: spend msec:2518, sec:2
+512: spend msec:3137, sec:3
+512: spend msec:2960, sec:2
+512: spend msec:3284, sec:3
+768: spend msec:3213, sec:3
+768: spend msec:2864, sec:2
+768: spend msec:3041, sec:3
+
+Optimal heap size is 1024 MB
