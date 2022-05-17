@@ -1,4 +1,4 @@
-package ru.antomad.otus.service;
+package ru.antomad.otus.hw03.service;
 
 public interface MessageService {
 

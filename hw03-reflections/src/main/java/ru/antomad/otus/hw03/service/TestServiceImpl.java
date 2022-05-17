@@ -1,11 +1,11 @@
-package ru.antomad.otus.service;
+package ru.antomad.otus.hw03.service;
 
-import ru.antomad.otus.annotation.After;
-import ru.antomad.otus.annotation.Before;
-import ru.antomad.otus.annotation.Test;
-import ru.antomad.otus.helper.ReflectionHelper;
-import ru.antomad.otus.reports.ClassReport;
-import ru.antomad.otus.reports.TestReport;
+import ru.antomad.otus.hw03.annotation.After;
+import ru.antomad.otus.hw03.annotation.Before;
+import ru.antomad.otus.hw03.annotation.Test;
+import ru.antomad.otus.hw03.helper.ReflectionHelper;
+import ru.antomad.otus.hw03.reports.ClassReport;
+import ru.antomad.otus.hw03.reports.TestReport;
 
 import java.io.File;
 import java.io.IOException;

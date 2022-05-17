@@ -1,4 +1,4 @@
-package ru.antomad.otus;
+package ru.antomad.otus.hw02;
 
 import java.util.*;
 

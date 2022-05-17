@@ -1,4 +1,4 @@
-package ru.antomad.otus.reports;
+package ru.antomad.otus.hw03.reports;
 
 import java.util.List;
 

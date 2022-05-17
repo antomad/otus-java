@@ -1,4 +1,4 @@
-package ru.antomad.otus.annotation;
+package ru.antomad.otus.hw03.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

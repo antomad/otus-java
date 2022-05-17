@@ -1,4 +1,4 @@
-package ru.antomad.otus;
+package ru.antomad.otus.hw01;
 
 
 import com.google.common.base.Joiner;

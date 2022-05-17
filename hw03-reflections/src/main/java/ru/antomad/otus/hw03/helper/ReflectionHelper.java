@@ -1,4 +1,4 @@
-package ru.antomad.otus.helper;
+package ru.antomad.otus.hw03.helper;
 
 import java.util.Arrays;
 

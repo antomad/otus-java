@@ -1,6 +1,8 @@
-package ru.antomad.otus;
+package ru.antomad.otus.hw03;
 
-import ru.antomad.otus.service.*;
+import ru.antomad.otus.hw03.service.*;
+import ru.antomad.otus.hw03.service.*;
+import ru.antomad.otus.hw03.service.*;
 
 public class Application {
 

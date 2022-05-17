@@ -1,8 +1,8 @@
-package ru.antomad.otus.test;
+package ru.antomad.otus.hw03.test;
 
-import ru.antomad.otus.annotation.After;
-import ru.antomad.otus.annotation.Before;
-import ru.antomad.otus.annotation.Test;
+import ru.antomad.otus.hw03.annotation.After;
+import ru.antomad.otus.hw03.annotation.Before;
+import ru.antomad.otus.hw03.annotation.Test;
 
 public class AnnotationTestBad {
 

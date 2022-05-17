@@ -1,8 +1,10 @@
-package ru.antomad.otus;
+package ru.antomad.otus.hw02;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.antomad.otus.hw02.Customer;
+import ru.antomad.otus.hw02.CustomerReverseOrder;
+import ru.antomad.otus.hw02.CustomerService;
 
 import java.util.HashMap;
 import java.util.Map;

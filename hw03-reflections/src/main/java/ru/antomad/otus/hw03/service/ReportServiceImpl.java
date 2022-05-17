@@ -1,7 +1,7 @@
-package ru.antomad.otus.service;
+package ru.antomad.otus.hw03.service;
 
-import ru.antomad.otus.reports.ClassReport;
-import ru.antomad.otus.reports.TestReport;
+import ru.antomad.otus.hw03.reports.ClassReport;
+import ru.antomad.otus.hw03.reports.TestReport;
 
 import java.util.List;
 
