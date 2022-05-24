@@ -12,6 +12,12 @@ public class LogInvocationHandler<T> implements InvocationHandler {
         this.logger = logger;
     }
 
+    //TODO Просто один раз в конструкторе просканировать и потом переиспользовать результаты сканирования.
+    /*
+    Рефлексия - довольно дорогой механизм, такой прокси будет вносить ощутимую задержку.
+    Стоит минимизировать количество обращений к рефлексии в течении жизненного цикла экземпляра класса.
+    Можно с чистой совестью принять что класс не будет меняться по ходу.
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if (method.isAnnotationPresent(Log.class)) {
